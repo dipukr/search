@@ -1,3 +1,5 @@
+package search;
+
 import java.util.Set;
 import java.util.List;
 import java.util.Stack;
@@ -6,6 +8,11 @@ import java.util.HashSet;
 import java.util.ArrayList;
 
 public class Search {
+	
+	public static List<Action> depthFirst(Problem problem) {
+		var actions = new ArrayList<Action>();
+		return actions;
+	}
 
 	public static List<Action> breadthFirst(Problem problem) {
 		var visited = new TreeSet<String>();
@@ -15,8 +22,8 @@ public class Search {
 		while (!queue.empty()) {
 			State state = queue.dequeue();
 			if (problem.isGoalState(state)) break;
-			if (!visited.contains(str(node.maze))) {
-				visited.add(str(node.maze));
+			if (!visited.contains(text(state.maze))) {
+				visited.add(str(state.maze));
 				for (State w: problem.getSuccessors(node)) {
 					List<Action> newpath = new ArrayList<>();
 					newpath.addAll(path);
@@ -29,7 +36,7 @@ public class Search {
 		return solution;
 	}
 
-	private static String str(byte[][] maze) {
+	private static String text(byte[][] maze) {
 		var buf = new StringBuilder();
 		for (int i = 0; i < 3; i++)
 			buf.append(String.valueOf(maze[i]));

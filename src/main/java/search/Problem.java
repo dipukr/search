@@ -1,7 +1,9 @@
+package search;
+
 import java.util.List;
 
 public interface Problem {
-	public State getStartState();
-	public boolean isGoalState(State state);
-	public List<State> getSuccessors(State state);
+	State getStartState();
+	boolean isGoalState(State state);
+	List<State> getSuccessors(State state);
 }

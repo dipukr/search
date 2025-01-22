@@ -1,14 +1,16 @@
+package search;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
-public class State implements Comparable<State> {
+public class State2 implements Comparable<State> {
 
 	public final byte[] board;
 	public final int cost;
 	public final int weight;
 
-	public State(byte[] board, int cost) {
+	public State2(byte[] board, int cost) {
 		this.board = board;
 		this.cost = cost;
 		this.weight = cost + heuristic2();

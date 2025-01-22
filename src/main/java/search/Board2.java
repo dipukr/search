@@ -1,6 +1,8 @@
+package search;
+
 import java.util.Random;
 
-public class Board {
+public class Board2 {
 
 	public static final byte[] GOAL = {1,2,3,4,5,6,7,8,0};
 	public byte[] data = {0,1,3,4,2,5,7,8,6};

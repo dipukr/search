@@ -1,14 +1,14 @@
-import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
+package search;
+
 import java.util.Arrays;
-import java.util.Map;
-import java.util.Set;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.Stack;
 
-public class Search {
+public class Search2 {
 
 	public static int count = 0;
 

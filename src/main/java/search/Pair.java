@@ -1,3 +1,5 @@
+package search;
+
 public class Pair<A, B> {
 
 	public final A fst;

@@ -1,3 +1,5 @@
+package search;
+
 public enum Action {
 	UP,
 	DOWN,

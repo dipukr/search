@@ -1,7 +1,9 @@
+package search;
+
 import java.util.List;
 import java.util.ArrayList;
 
-public class Puzzle implements Problem {
+public class EightPuzzle implements Problem {
 
 	private State start;
 
