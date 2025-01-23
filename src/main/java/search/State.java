@@ -5,29 +5,29 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 public class State {
-
-	public static final byte[][] goal = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};
-
+	
 	public byte[][] maze;
 	public Action action;
 	public int row, col;
 
 	public State(byte[][] maze) {
-		this.maze = new byte[3][3];
-		for (int i = 0; i < 3; i++)
-			for (int j = 0; j < 3; j++)
+		this.row = maze.length;
+		this.col = maze[0].length;
+		this.maze = new byte[row][col];
+		for (int i = 0; i < row; i++)
+			for (int j = 0; j < col; j++)
 				this.maze[i][j] = maze[i][j];
 	}
 
-	public boolean isGoal() {
-		for (int i = 0; i < 3; i++)
-			if (Arrays.equals(maze[i], goal[i]) == false)
+	public boolean isGoal(State goal) {
+		for (int i = 0; i < row; i++)
+			if (Arrays.equals(maze[i], goal.maze[i]) == false)
 				return false;
 		return true;
 	}
 
 	public List<Action> getActions() {
-		List<Action> actions = new ArrayList<Action>();
+		var actions = new ArrayList<Action>();
 		if (row != 0) actions.add(Action.UP);
 		if (row != 2) actions.add(Action.DOWN);
 		if (col != 0) actions.add(Action.LEFT);
@@ -52,13 +52,12 @@ public class State {
 		return state;
 	}
 
+	@Override
 	public String toString() {
 		var buf = new StringBuilder();
-		for (byte[] a: maze) {
+		for (byte[] a: maze)
 			for (byte b: a)
-				buf.append(b).append(' ');
-			buf.append('\n');
-		}
+				buf.append(b);
 		return buf.toString();
 	}
 }

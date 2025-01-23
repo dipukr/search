@@ -6,9 +6,11 @@ import java.util.ArrayList;
 public class EightPuzzle implements Problem {
 
 	private State start;
+	private State goal;
 
-	public EightPuzzle(State start) {
+	public EightPuzzle(State start, State goal) {
 		this.start = start;
+		this.goal = goal;
 	}
 
 	public State getStartState() {
@@ -16,7 +18,7 @@ public class EightPuzzle implements Problem {
 	}
 
 	public boolean isGoalState(State state) {
-		return state.isGoal();
+		return state.isGoal(goal);
 	}
 
 	public List<State> getSuccessors(State state) {
