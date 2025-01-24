@@ -5,17 +5,15 @@ import java.util.Random;
 
 public class Board {
 
-	private static final byte[] goal = {1,2,3,4,5,6,7,8,0};
-	private byte[] board;
+	public byte[] board;
 
 	public Board(byte[] board) {
 		this.board = board;
 	}
 	
-	public byte[] getBoard() {return board;}
-	public void setBoard(byte[] board) {this.board = board;}
-	public Board clone() {return new Board(board.clone());}
-	public boolean isGoal() {return Arrays.equals(board, goal);}
+	public boolean isGoal(Board other) {
+		return Arrays.equals(this.board, other.board);
+	}
 
 	public void move(Action act) {
 		int b = blankIndex();
@@ -47,9 +45,9 @@ public class Board {
 	}
 
 	public void reset() {
-		for (int i = 0; i < board.length-1; i++)
+		for (int i = 0; i < board.length - 1; i++)
 			board[i] = (byte)(i + 1);
-		board[board.length-1] = 0;
+		board[board.length - 1] = 0;
 	}
 
 	public boolean isSolvable() {
@@ -75,7 +73,13 @@ public class Board {
 			if (board[i] == 0) continue;
 		return h;	
 	}
+	
+	@Override
+	public Board clone() {
+		return new Board(board.clone());
+	}
 
+	@Override
 	public String toString() {
 		var s = new StringBuffer("[");
 		for (int i = 1; i <= board.length; i++) {
@@ -85,17 +89,5 @@ public class Board {
 		}
 		s.append(']');
 		return s.toString();
-	}
-
-	public static void main(String[] args) throws Exception {
-		Board board = new Board(goal);
-		System.out.println(board);
-		System.out.println(board.isSolvable());
-		board.newBoard();
-		System.out.println(board);
-		System.out.println(board.isSolvable());
-		board.newBoard();
-		System.out.println(board);
-		System.out.println(board.isSolvable());
 	}
 }

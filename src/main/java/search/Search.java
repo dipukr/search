@@ -22,24 +22,17 @@ public class Search {
 		while (!queue.empty()) {
 			State state = queue.dequeue();
 			if (problem.isGoalState(state)) break;
-			if (!visited.contains(text(state.maze))) {
-				visited.add(str(state.maze));
-				for (State w: problem.getSuccessors(node)) {
+			if (!visited.contains(state.toString())) {
+				visited.add(state.toString());
+				for (State w: problem.getSuccessors(state)) {
 					List<Action> newpath = new ArrayList<>();
 					newpath.addAll(path);
 					newpath.add(w.action);
 					queue.enqueue(w);
-					pqueue.enqueue(newpath);
+					queue.enqueue(newpath);
 				}
 			}
 		}
 		return solution;
-	}
-
-	private static String text(byte[][] maze) {
-		var buf = new StringBuilder();
-		for (int i = 0; i < 3; i++)
-			buf.append(String.valueOf(maze[i]));
-		return buf.toString();
 	}
 }

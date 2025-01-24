@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.Stack;
 
-public class Search2 {
+public class Algorithm {
 
 	public static int count = 0;
 

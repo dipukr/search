@@ -8,20 +8,16 @@ public class State {
 	
 	public byte[][] maze;
 	public Action action;
-	public int row, col;
+	public int row;
+	public int col;
 
 	public State(byte[][] maze) {
-		this.row = maze.length;
-		this.col = maze[0].length;
-		this.maze = new byte[row][col];
-		for (int i = 0; i < row; i++)
-			for (int j = 0; j < col; j++)
-				this.maze[i][j] = maze[i][j];
+		this.maze = maze.clone();
 	}
 
 	public boolean isGoal(State goal) {
-		for (int i = 0; i < row; i++)
-			if (Arrays.equals(maze[i], goal.maze[i]) == false)
+		for (int i = 0; i < maze.length; i++)
+			if (!Arrays.equals(this.maze[i], goal.maze[i]))
 				return false;
 		return true;
 	}
@@ -29,9 +25,9 @@ public class State {
 	public List<Action> getActions() {
 		var actions = new ArrayList<Action>();
 		if (row != 0) actions.add(Action.UP);
-		if (row != 2) actions.add(Action.DOWN);
 		if (col != 0) actions.add(Action.LEFT);
-		if (col != 2) actions.add(Action.RIGHT);
+		if (row != maze.length - 1) actions.add(Action.DOWN);
+		if (col != maze[0].length - 1) actions.add(Action.RIGHT);
 		return actions;
 	}
 
