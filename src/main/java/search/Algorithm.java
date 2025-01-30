@@ -51,13 +51,4 @@ public class Algorithm {
 		}
 		return parent;
 	}
-
-
-
-	public static String make(byte[] a) {
-		String s = "";
-		for (int i=0; i<a.length; ++i)
-			s += String.valueOf(a[i]);
-		return s;
-	}
 }
